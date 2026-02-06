@@ -1,184 +1,59 @@
-🌸 Iris Flower Classification (Simple ML Project)
-📌 Project Overview
+🌸 Iris Flower Classification using Deep Learning
 
-This project implements a supervised machine learning classification pipeline using the classic Iris dataset. The goal is to classify iris flowers into one of three species:
+This project implements a deep learning-based multi-class classification model to predict the species of an Iris flower using four numerical features: sepal length, sepal width, petal length, and petal width. A feedforward neural network (MLP) is trained on the classic Iris dataset to classify samples into Setosa, Versicolor, and Virginica.
 
-Iris-setosa
+Problem Type: Supervised Learning, Multi-class Classification
 
-Iris-versicolor
+Inputs: 4 continuous features
 
-Iris-virginica
+Outputs: 3-class categorical label
 
-based on four numerical features:
+Model: Fully Connected Neural Network (MLP)
 
-Sepal length
+🗂️ Dataset
 
-Sepal width
+Source: Iris dataset (UCI / scikit-learn)
 
-Petal length
+Samples: 150
 
-Petal width
+Features: 4 numeric
 
-This dataset is linearly and non-linearly separable in parts, making it ideal for benchmarking classical ML algorithms and demonstrating the end-to-end ML workflow.
-
-🧠 Problem Type
-
-Task: Multiclass Classification
-
-Learning Type: Supervised Learning
-
-Input: 4 continuous numerical features
-
-Output: 1 categorical class label (3 classes)
-
+Classes: 3 (balanced dataset)
 
 ⚙️ Tech Stack
 
-Language: Python 3.x
+Python
 
-Libraries:
+NumPy, Pandas
 
-NumPy
+Scikit-learn (preprocessing, split, metrics)
 
-Pandas
+TensorFlow/Keras (or PyTorch)
 
-Scikit-learn
+Matplotlib/Seaborn (visualization)
 
-Matplotlib / Seaborn (for visualization)
+🏗️ Pipeline
 
-Joblib (for model persistence)
+Load dataset and perform basic EDA
 
-🔬 ML Pipeline
+Preprocess data (train-test split, feature scaling, one-hot encoding)
 
-Data Loading
+Build MLP model (Dense layers with ReLU + Softmax output)
 
-Load Iris dataset from CSV or sklearn.datasets.
+Compile model (Adam optimizer, Categorical Crossentropy loss)
 
-Exploratory Data Analysis (EDA)
+Train on training set and validate on test set
 
-Check data distribution
+Evaluate using accuracy, confusion matrix, and classification report
 
-Class balance
+Predict class labels for unseen samples
 
-Feature correlations
+🧱 Model Architecture (Example)
+Input (4 features)
+ → Dense(16, ReLU)
+ → Dense(8, ReLU)
+ → Dense(3, Softmax)
 
-Pair plots / histograms
+📊 Results
 
-Data Preprocessing
-
-Train-test split
-
-Feature scaling (StandardScaler) if required
-
-Label encoding (if using custom dataset)
-
-Model Training
-Example algorithms:
-
-Logistic Regression
-
-K-Nearest Neighbors (KNN)
-
-Support Vector Machine (SVM)
-
-Random Forest Classifier
-
-Model Evaluation
-
-Accuracy score
-
-Confusion matrix
-
-Classification report (Precision, Recall, F1-score)
-
-Model Saving
-
-Persist trained model using joblib or pickle
-
-📊 Example Models Used
-
-Logistic Regression (baseline linear classifier)
-
-KNN (distance-based non-parametric model)
-
-SVM (margin-based classifier, good for small datasets)
-
-Random Forest (ensemble, handles non-linearity well)
-
-🚀 How to Run the Project
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/iris-classification.git
-cd iris-classification
-
-2️⃣ Install Dependencies
-pip install -r requirements.txt
-
-3️⃣ Run Training Script
-python src/train.py
-
-4️⃣ Evaluate Model
-python src/evaluate.py
-
-📈 Evaluation Metrics
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-Score
-
-Confusion Matrix
-
-Since the Iris dataset is clean and well-separated, most classical models achieve >95% accuracy with proper tuning.
-
-🧪 Results (Typical)
-
-Logistic Regression: ~96–98% accuracy
-
-KNN: ~95–98% accuracy
-
-SVM: ~97–99% accuracy
-
-Random Forest: ~96–99% accuracy
-
-Exact performance depends on:
-
-Train-test split
-
-Hyperparameters
-
-Random seed
-
-📌 Key Learning Outcomes
-
-Understanding the end-to-end ML workflow
-
-Handling multiclass classification
-
-Model comparison and evaluation
-
-Feature scaling and preprocessing
-
-Saving and loading trained models
-
-Interpreting confusion matrices and metrics
-
-🔮 Future Improvements
-
-Add hyperparameter tuning (GridSearchCV / RandomizedSearchCV)
-
-Add cross-validation
-
-Build a simple Streamlit or Flask web app for inference
-
-Add model explainability (feature importance, SHAP)
-
-Convert into a production-ready inference pipeline
-
-🧾 Dataset Reference
-
-UCI Machine Learning Repository: Iris Dataset
-
-Also available via sklearn.datasets.load_iris()
+The model achieves ~95–100% test accuracy (depending on split and hyperparameters). Most confusion occurs between Versicolor and Virginica, which is expected due to feature overlap. Overall, the network learns a robust non-linear decision boundary for all three classes.
